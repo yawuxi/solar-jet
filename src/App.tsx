@@ -1,6 +1,10 @@
+import { AppRouter } from "components/AppRouter";
+
 const App = () => {
   return (
-    <div className="app"></div>
+    <div style={{ width: "100dvw", height: "100dvh" }}>
+      <AppRouter />
+    </div>
   );
 };
 
