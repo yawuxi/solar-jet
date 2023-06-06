@@ -19,7 +19,7 @@ export default defineConfig({
       types: path.resolve("src/types"),
       pages: path.resolve("src/pages"),
       services: path.resolve("src/services"),
-      http: path.resolve("src/http"),
+      api: path.resolve("src/api"),
       layout: path.resolve("src/layout"),
       scss: path.resolve("src/scss"),
     },

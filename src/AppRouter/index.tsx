@@ -2,8 +2,10 @@ import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Layout } from "components/Layout";
 
-const HomePage = lazy(() =>
-  import("pages/HomePage").then((module) => ({ default: module.HomePage }))
+const ProductsPage = lazy(() =>
+  import("features/Products/pages/ProductsPage").then((module) => ({
+    default: module.ProductsPage,
+  }))
 );
 
 const ErrorPage = lazy(() =>
@@ -14,7 +16,7 @@ export const AppRouter = () => {
   return (
     <Layout>
       <Routes>
-        <Route path="/home" element={<HomePage />} />
+        <Route path="/home" element={<ProductsPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Layout>
