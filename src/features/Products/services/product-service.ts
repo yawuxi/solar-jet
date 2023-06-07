@@ -30,11 +30,15 @@ export class ProductService {
     return _transformProductsData(data.products);
   }
 
-  static async getProductById(id: string): Promise<Product> {
+  static async getProductByUrlKey(url_key: string): Promise<Product | null> {
     const { data } = await $api.get<{ product: ProductsResponse[] }>(
-      `/products/${id}`
+      `/product?url_key=${url_key}`
     );
 
-    return _transformProductByIdData(data.product);
+    if (data.product.length > 0) {
+      return _transformProductByIdData(data.product);
+    } else {
+      return null;
+    }
   }
 }

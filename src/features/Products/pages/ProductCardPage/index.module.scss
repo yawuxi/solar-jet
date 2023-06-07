@@ -1,0 +1,62 @@
+.page {
+  display: flex;
+  gap: 85px;
+}
+
+.gallery {
+  width: 41.59%;
+}
+
+.mainImage {
+  width: 100%;
+  height: 537px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  padding: 60px 0;
+}
+
+.name {
+  margin-bottom: 80px;
+}
+
+.description {
+  margin-bottom: 45px;
+}
+
+.price {
+  display: flex;
+  align-items: flex-end;
+  gap: 15px;
+  font-size: 40px;
+  font-weight: 600;
+
+  sub {
+    font-size: 20px;
+    text-decoration: line-through;
+    color: var(--old-price-text-color);
+    font-weight: 400;
+  }
+}
+
+.buy {
+  margin-top: auto;
+  display: flex;
+  gap: 20px;
+}
+
+.counter {
+  align-self: flex-end;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid var(--border-color);
+
+  > div {
+    cursor: pointer;
+    font-size: 1.125rem;
+  }
+}

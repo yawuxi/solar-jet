@@ -8,6 +8,12 @@ const ProductsPage = lazy(() =>
   }))
 );
 
+const ProductsCardPage = lazy(() =>
+  import("features/Products/pages/ProductCardPage").then((module) => ({
+    default: module.ProductCardPage,
+  }))
+);
+
 const ErrorPage = lazy(() =>
   import("pages/ErrorPage").then((module) => ({ default: module.ErrorPage }))
 );
@@ -17,6 +23,7 @@ export const AppRouter = () => {
     <Layout>
       <Routes>
         <Route path="/home" element={<ProductsPage />} />
+        <Route path="/product" element={<ProductsCardPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Layout>
