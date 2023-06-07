@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { useProducts } from "features/Products/store/useProducts";
 import { Button } from "components/Button";
 import { Loader } from "components/Loader";
+import { ImagePlaceholder } from "components/ImagePlaceholder";
 import styles from "./index.module.scss";
 
 export const ProductCardPage: FC = () => {
@@ -49,12 +50,25 @@ export const ProductCardPage: FC = () => {
 
   return (
     <div className={styles.page}>
-      <div className={styles.gallery}>
-        <div className={styles.mainImage}>
-          <img src={image_path} alt="product image" />
+      <aside className={styles.gallery}>
+        <div className={styles.previewImages}>
+          <div className={styles.preview}>
+            {image_path ? (
+              <img src={image_path} alt="product image preview" />
+            ) : (
+              <ImagePlaceholder />
+            )}
+          </div>
         </div>
-      </div>
-      <div className={styles.info}>
+        <div className={styles.mainImage}>
+          {image_path ? (
+            <img src={image_path} alt="product image" />
+          ) : (
+            <ImagePlaceholder />
+          )}
+        </div>
+      </aside>
+      <main className={styles.info}>
         <h2 className={styles.name}>{name}</h2>
         <p className={styles.description}>{description}</p>
         <span className={styles.price}>
@@ -69,7 +83,7 @@ export const ProductCardPage: FC = () => {
           </div>
           <Button>ADD TO CART</Button>
         </div>
-      </div>
+      </main>
     </div>
   );
 };

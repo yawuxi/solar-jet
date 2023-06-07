@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { Product } from "features/Products/types/product";
+import { ImagePlaceholder } from "components/ImagePlaceholder";
 import styles from "./index.module.scss";
 
 type ToPick = "price" | "name" | "image_path" | "url_key" | "sale";
@@ -24,10 +25,10 @@ export const ProductItem: FC<Props> = ({
     <article className={styles.item} onClick={handleClickOnItem}>
       {Boolean(sale) && <div className={styles.sale}>SALE 50%</div>}
       <div className={styles.productImage}>
-        {!image_path ? (
+        {image_path ? (
           <img src={image_path} alt="product image" />
         ) : (
-          <div className={styles.imagePlaceholder}></div>
+          <ImagePlaceholder />
         )}
       </div>
       <h3 className={styles.title}>{name}</h3>

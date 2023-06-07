@@ -1,7 +1,7 @@
 import doubleView from "assets/double-view.png";
 import blockView from "assets/block-view.png";
 import gridView from "assets/grid-view.png";
-import { MenuItem } from "../types/menu-item";
+import { MenuItem } from "components/Header/types/menu-item";
 
 export const headerMenu: MenuItem[] = [
   { id: 1, image: doubleView, isActive: false },

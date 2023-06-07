@@ -1,10 +1,10 @@
 import { FC, useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { ReactComponent as ShoppingBag } from "assets/shopbag.svg";
 import { useProducts } from "features/Products/store/useProducts";
 import { Button } from "components/Button";
 import { ReactComponent as Expand } from "assets/expand.svg";
 import { MenuList } from "./components/MenuList";
+import { Cart } from "./components/Cart";
 import styles from "./index.module.scss";
 
 export const Header: FC = () => {
@@ -12,6 +12,10 @@ export const Header: FC = () => {
   const [searchParams] = useSearchParams();
   const [isDetailedProduct, setIsDetailedProduct] = useState(false);
   const { productDetailedError, productDetailedLoading } = useProducts();
+
+  const headerClass = isDetailedProduct
+    ? `${styles.header} ${styles.detailedProduct}`
+    : styles.header;
 
   useEffect(() => {
     if (
@@ -30,30 +34,31 @@ export const Header: FC = () => {
   };
 
   return (
-    <header className={styles.header}>
+    <header className={headerClass}>
       {isDetailedProduct && (
         <Button className={styles.backButton} onClick={handleBackToShopClick}>
           <span>&#10229;</span>
           <p>BACK TO SHOP</p>
         </Button>
       )}
-      {!isDetailedProduct ? (
+      {isDetailedProduct ? (
+        <>
+          <Button className={styles.expand}>
+            <Expand />
+          </Button>
+          <Cart />
+        </>
+      ) : (
         <>
           <div className={styles.viewTypes}>
             <MenuList />
           </div>
-          <button className={styles.filter}>FILTER</button>
+          <div className={styles.right}>
+            <button className={styles.filter}>FILTER</button>
+            <Cart />
+          </div>
         </>
-      ) : (
-        <Button className={styles.expand}>
-          <Expand />
-        </Button>
       )}
-      <button className={styles.cart}>
-        <div>
-          <ShoppingBag />
-        </div>
-      </button>
     </header>
   );
 };
