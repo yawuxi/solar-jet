@@ -5,6 +5,28 @@
   max-height: 80px;
 }
 
+.backButton {
+  background-color: var(--white);
+  color: var(--black);
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  border: 1px solid var(--border-color);
+  margin-right: auto;
+
+  span {
+    font-size: 1.5rem;
+  }
+}
+
+.expand {
+  padding: 0 1.875rem;
+  background-color: var(--white);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  border-left: 1px solid var(--border-color);
+}
+
 .viewTypes {
   display: flex;
 }

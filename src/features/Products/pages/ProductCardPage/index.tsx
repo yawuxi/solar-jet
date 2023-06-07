@@ -2,14 +2,19 @@ import { FC, useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useProducts } from "features/Products/store/useProducts";
 import { Button } from "components/Button";
+import { Loader } from "components/Loader";
 import styles from "./index.module.scss";
 
 export const ProductCardPage: FC = () => {
   const navigate = useNavigate();
   const [count, setCount] = useState(1);
   const [searchParams] = useSearchParams();
-  const { productDetailed, productDetailedError, setProductDetailed } =
-    useProducts();
+  const {
+    productDetailed,
+    productDetailedLoading,
+    productDetailedError,
+    setProductDetailed,
+  } = useProducts();
 
   useEffect(() => {
     const url_key = searchParams.get("url_key");
@@ -37,6 +42,10 @@ export const ProductCardPage: FC = () => {
   };
 
   const calculatedPrice = sale ? price / 2 : price;
+
+  if (productDetailedLoading) {
+    return <Loader />;
+  }
 
   return (
     <div className={styles.page}>
