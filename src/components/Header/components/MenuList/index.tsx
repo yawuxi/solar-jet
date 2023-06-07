@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { headerMenu } from "../../data/header-menu";
+import { headerMenu } from "components/Header/data/header-menu";
 import styles from "./index.module.scss";
 
 export const MenuList: FC = () => {
