@@ -12,7 +12,10 @@ export const MenuList: FC = () => {
     setHeaderMenuState((prevState) =>
       prevState.map((item) =>
         item.id === id
-          ? { ...item, isActive: !item.isActive }
+          ? {
+              ...item,
+              isActive: item.isActive ? item.isActive : !item.isActive,
+            }
           : { ...item, isActive: false }
       )
     );
