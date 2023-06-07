@@ -11,10 +11,10 @@ export const ProductsPage: FC = () => {
   }, [setProducts]);
 
   return (
-    <div className={styles.page}>
+    <main className={styles.page}>
       {products.map(({ id, ...other }) => (
         <ProductItem {...other} key={id} />
       ))}
-    </div>
+    </main>
   );
 };
