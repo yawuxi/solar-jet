@@ -1,14 +1,14 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useProducts } from "features/Products/store/useProducts";
 import { Button } from "components/Button";
 import { Loader } from "components/Loader";
 import { ImagePlaceholder } from "components/ImagePlaceholder";
+import { Counter } from "./components/Counter";
 import styles from "./index.module.scss";
 
 export const ProductCardPage: FC = () => {
   const navigate = useNavigate();
-  const [count, setCount] = useState(1);
   const [searchParams] = useSearchParams();
   const {
     productDetailed,
@@ -31,16 +31,6 @@ export const ProductCardPage: FC = () => {
   }, [productDetailedError, navigate, searchParams, setProductDetailed]);
 
   const { sale, image_path, name, description, price } = productDetailed;
-
-  const handleIncreaseCount = () => {
-    setCount((prevState) => prevState + 1);
-  };
-
-  const handleDecreaseCount = () => {
-    if (count > 1) {
-      setCount((prevState) => prevState - 1);
-    }
-  };
 
   const calculatedPrice = sale ? price / 2 : price;
 
@@ -76,11 +66,7 @@ export const ProductCardPage: FC = () => {
           {Boolean(sale) && <sub className={styles.oldPirce}>${price}</sub>}
         </span>
         <div className={styles.buy}>
-          <div className={styles.counter}>
-            <div onClick={handleDecreaseCount}>-</div>
-            <div>{count}</div>
-            <div onClick={handleIncreaseCount}>+</div>
-          </div>
+          <Counter />
           <Button>ADD TO CART</Button>
         </div>
       </main>
