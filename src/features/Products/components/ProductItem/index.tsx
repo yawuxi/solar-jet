@@ -17,7 +17,7 @@ export const ProductItem: FC<Props> = ({
   const calculatedPrice = sale ? price / 2 : price;
 
   const handleClickOnItem = () => {
-    navigate(`/product/${url_key}`);
+    navigate(`/product?url_key=${url_key}`);
   };
 
   return (
