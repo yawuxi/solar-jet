@@ -22,7 +22,7 @@ export const AppRouter = () => {
   return (
     <Layout>
       <Routes>
-        <Route path="/home" element={<ProductsPage />} />
+        <Route path="/" element={<ProductsPage />} />
         <Route path="/product" element={<ProductsCardPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
