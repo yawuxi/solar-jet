@@ -30,7 +30,7 @@ export const Header: FC = () => {
   }, [productDetailedError, productDetailedLoading, searchParams]);
 
   const handleBackToShopClick = () => {
-    navigate("/home");
+    navigate("/");
   };
 
   return (
